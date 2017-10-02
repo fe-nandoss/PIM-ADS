@@ -1,0 +1,144 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+struct estruturaCliente{
+	char nome[5][20];
+	char cpf[5][20];
+	int idade[5];
+};estruturaCliente cliente;
+
+struct estruturaCarro{
+	
+	char marca[5][20]= {"Honda","Hyundai","Ford","Fiat","Chevrolet"};
+	char modelo[5][20] = {"Civic","i30","Fusion","Uno","Onix"};
+	char placa[5][20] = {"IEP-2368","XES-7945","LKA-1345","DBS-4361","PQM-7642"};
+	char cor[5][20] = {"PRETO","VERMELHO","BRANCO","PRETO","CINZA"};
+	int ano[5]= {2017,2017,2013,2015,2014};
+	float diaria[5] = {172.86,256.13,200.03,89.36,134.36};
+
+};estruturaCarro carro;
+
+struct estruturaData{
+	int tm_sec;
+	int tm_min;
+	int tm_day;
+	int tm_mon;
+	int tm_year;
+	
+	
+};estruturaData DataHora;
+
+void DadosCliente(){
+	
+	for(int i = 0;i<=0;i++){
+		
+		printf("Digite o seu nome: ",i);
+		scanf("%s",&cliente.nome[i]);
+		
+		for(int j = 0; j<=0;j++){
+			printf("Digite o seu cpf: ",j);
+			scanf("%s",&cliente.cpf[j]);
+			
+			for(int k = 0;k<=0;k++){
+				printf("Digite a sua idade: ",k);
+				scanf("%d",&cliente.idade[k]);
+		
+			}
+		}
+
+	}
+}
+
+int main(){
+	
+	int tipo_cliente,tipo_carro,qtde_dia;
+	float desc_perc,total_alug;
+	char tabela_preco;
+	DadosCliente();
+
+	
+	system("color 0f");
+	printf("Por favor informe qual o tipo de cliente voce e: \n 1 - Idoso\n 2 - Faz parte de uma ONG\n 3 - Nenhuma opcao acima \n");
+	scanf("%d",&tipo_cliente);
+	
+	//LISTAS OS CARROS PRÉ-CADASTRADOS.
+	
+	system("cls");
+	printf("Escolha nossos carros disponiveis:\n");
+	
+	for(int i = 0, j =0, k =0,m = 0, n = 0; i<=4, j<=4, k<=4, m<=4,n<=4;i++,j++,k++,m++,n++){
+		
+		printf("Marca: %s  Modelo: %s  Placa: %s  Cor: %s Ano: %d \n\n",carro.marca[i],carro.modelo[j],carro.placa[k],carro.cor[m],carro.ano[n]);
+	}
+	printf("\nDeseja ver a tabela de preco ? (s/n)");
+	scanf("%s",&tabela_preco);
+	
+	if(tabela_preco == 's'){
+		system("cls");
+		system("color 0e");
+		
+		//MOSTRA A TABELA DE PREÇO COM O NUMERO NA FRENTE PARA DEPOIS A PESSOA PODER SELECIONAR O CARRO
+		for(int i=0,j=0,k=0,l = 0;i<=5,j<=5,k<=5,l<=5;i++,j++,k++,l++){
+			
+			printf("%d - %s %s %.2f \n",l,carro.marca[i],carro.modelo[j],carro.diaria[k]);
+			
+		}
+		
+		printf("Para escolher o carro digite o numero que esta ao lado: \n");
+		scanf("%d",&tipo_carro);
+				for(int i=tipo_carro,j=tipo_carro,k=tipo_carro;i<=tipo_carro,j<=tipo_carro,k<=tipo_carro;i++,j++,k++){
+					
+					printf("%s %s com a diaria de: %.2f \n",carro.marca[i],carro.modelo[j],carro.diaria[k]);
+					
+				}
+		printf("Quantos dias gostaria de alugar? ");
+		scanf("%d",&qtde_dia);
+		
+		// DE ACORDO COM A TIPO_CLIENTE O CLIENTE RECEBE O DESCONTO
+		
+		switch(tipo_cliente){
+			
+			case 1:
+				total_alug = qtde_dia*carro.diaria[tipo_carro];
+				desc_perc = (total_alug*10)/100;
+				total_alug +=-desc_perc;
+				
+				printf("O valor do desconto por se idoso sera de: %.2f e o total saira: %.2f \n\n",desc_perc,total_alug);
+				
+				break;
+				
+				
+				
+			
+			case 2:
+				total_alug = qtde_dia*carro.diaria[tipo_carro];
+				desc_perc = (total_alug*5)/100;
+				total_alug +=-desc_perc;
+				
+				printf("O valor do desconto por fazer parte de uma ONG sera de: %.2f e o total saira: %.2f\n\n",desc_perc,total_alug);
+				break;
+				
+				
+				
+			
+			case 3:
+				total_alug = qtde_dia*carro.diaria[tipo_carro];
+				desc_perc = (total_alug*10)/100;
+				total_alug +=-desc_perc;
+				
+				printf("O valor total do aluguel sera de: %.2f\n\n",total_alug);
+				break;
+				
+				
+			
+			default:
+				printf("Voce selecionou o tipo de cliente? ");
+	
+		}
+		
+	}
+	
+system("\n\npause");
+return 0;
+}
